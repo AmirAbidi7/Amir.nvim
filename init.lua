@@ -624,23 +624,16 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				-- clangd = {},
-				-- gopls = {},
-				-- pyright = {},
+				clangd = {},
+				gopls = {},
+				pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				intelephense = {},
-				tailwindcss = {},
-				angularls = {
-					cmd = {
-						"ngserver",
-						"--stdio",
-						"--tsProbeLocations",
-						project_library_path,
-						"--ngProbeLocations",
-						project_library_path,
-					},
-				},
+				-- intelephense = {},
+				emmet_language_server = {},
+				css_variables = {},
+				cssls = {},
+				angularls = {},
 				csharp_ls = {
 					cmd = { "csharp-ls" },
 					filetypes = { "cs" },
@@ -693,7 +686,6 @@ require("lazy").setup({
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"intelephense",
 					"lua_ls",
 					"csharp_ls",
 				},
@@ -822,7 +814,7 @@ require("lazy").setup({
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.confirm({ select = true }),
 
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
